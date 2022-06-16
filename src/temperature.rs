@@ -7,6 +7,27 @@ pub enum Temperature {
     Fahrenheit(f64),
 }
 
+#[macro_export]
+macro_rules! celsius {
+    ($c:expr) => {
+        Temperature::Celsius($c)
+    };
+}
+
+#[macro_export]
+macro_rules! kelvin {
+    ($k:expr) => {
+        Temperature::Kelvin($k)
+    };
+}
+
+#[macro_export]
+macro_rules! fahrenheit {
+    ($f:expr) => {
+        Temperature::Fahrenheit($f)
+    };
+}
+
 impl Temperature {
     /// Returns `self` with the contained value converted to Celsius
     /// as a [`Temperature::Celsius`], returning a copy of `self` if
