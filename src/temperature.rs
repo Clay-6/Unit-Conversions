@@ -1,36 +1,66 @@
-/// Converts a temperature in Fahrenheit to
-/// its equivalent in Celsius
-pub fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+pub enum Temperature {
+    Celsius(f64),
+    Kelvin(f64),
+    Fahrenheit(f64),
+}
+
+impl Temperature {
+    /// Returns `self` with the contained value converted to Celsius
+    /// as a [`Temperature::Celsius`], returning a copy of `self` if
+    /// it was already in Celsius
+    pub fn to_celsius(&self) -> Temperature {
+        match self {
+            Temperature::Celsius(_) => *self,
+            Temperature::Kelvin(k) => Self::Celsius(kelvin_to_celsius(*k)),
+            Temperature::Fahrenheit(f) => Self::Celsius(fahrenheit_to_celsius(*f)),
+        }
+    }
+
+    /// Returns `self` with the contained value converted to Kelvin
+    /// as a [`Temperature::Kelvin`], returning a copy of `self` if
+    /// it was already in Kelvin
+    pub fn to_kelvin(&self) -> Temperature {
+        match self {
+            Temperature::Kelvin(_) => *self,
+            Temperature::Celsius(c) => Self::Kelvin(celsius_to_kelvin(*c)),
+            Temperature::Fahrenheit(f) => Self::Kelvin(fahrenheit_to_kelvin(*f)),
+        }
+    }
+
+    /// Returns `self` with the contained value
+    /// converted to Fahrenheit as a [`Temperature::Fahrenheit`],
+    /// returning a copy of `self` if it was already in Fahrenheit
+    pub fn to_fahrenheit(&self) -> Temperature {
+        match self {
+            Temperature::Fahrenheit(_) => *self,
+            Temperature::Celsius(c) => Self::Fahrenheit(celsius_to_fahrenheit(*c)),
+            Temperature::Kelvin(k) => Self::Fahrenheit(kelvin_to_fahrenheit(*k)),
+        }
+    }
+}
+
+fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
     (fahrenheit - 32.0) / 1.8
 }
 
-/// Converts a temperature in Celsius to its
-/// equivalent in Fahrenheit
-pub fn celsius_to_fahrenheit(celsius: f64) -> f64 {
+fn celsius_to_fahrenheit(celsius: f64) -> f64 {
     celsius * 1.8 + 32.0
 }
 
-/// Converts a temperature in Kelvin to its
-/// equivalent in celsius
-pub fn kelvin_to_celsius(kelvin: f64) -> f64 {
+fn kelvin_to_celsius(kelvin: f64) -> f64 {
     kelvin - 273.15
 }
 
-/// Converts a temperature in Celsius to its
-/// equivalent in Kelvin
-pub fn celsius_to_kelvin(celsius: f64) -> f64 {
+fn celsius_to_kelvin(celsius: f64) -> f64 {
     celsius + 273.15
 }
 
-/// Converts a temperature in Fahrenheit to its
-/// equivalent in Kelvin
-pub fn fahrenheit_to_kelvin(fahrenheit: f64) -> f64 {
+fn fahrenheit_to_kelvin(fahrenheit: f64) -> f64 {
     (fahrenheit + 459.67) * 1.8
 }
 
-/// Converts a temperature in Kelvin to its equivalent
-/// in Fahrenheit
-pub fn kelvin_to_fahrenheit(kelvin: f64) -> f64 {
+fn kelvin_to_fahrenheit(kelvin: f64) -> f64 {
     (kelvin - 273.15) * 1.8 + 32.0
 }
 
