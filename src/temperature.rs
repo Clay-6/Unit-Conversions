@@ -52,26 +52,32 @@ impl fmt::Display for Temperature {
     }
 }
 
+#[inline]
 fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
     (fahrenheit - 32.0) / 1.8
 }
 
+#[inline]
 fn celsius_to_fahrenheit(celsius: f64) -> f64 {
     celsius * 1.8 + 32.0
 }
 
+#[inline]
 fn kelvin_to_celsius(kelvin: f64) -> f64 {
     kelvin - 273.15
 }
 
+#[inline]
 fn celsius_to_kelvin(celsius: f64) -> f64 {
     celsius + 273.15
 }
 
+#[inline]
 fn fahrenheit_to_kelvin(fahrenheit: f64) -> f64 {
     (fahrenheit + 459.67) * 1.8
 }
 
+#[inline]
 fn kelvin_to_fahrenheit(kelvin: f64) -> f64 {
     (kelvin - 273.15) * 1.8 + 32.0
 }
