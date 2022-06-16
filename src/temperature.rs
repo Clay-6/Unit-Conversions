@@ -7,6 +7,7 @@ pub enum Temperature {
     Fahrenheit(f64),
 }
 
+/// Convenience macro to create a [`Temperature::Celsius`]
 #[macro_export]
 macro_rules! celsius {
     ($c:expr) => {
@@ -14,6 +15,7 @@ macro_rules! celsius {
     };
 }
 
+/// Convenience macro to create a [`Temperature::Kelvin`]
 #[macro_export]
 macro_rules! kelvin {
     ($k:expr) => {
@@ -21,6 +23,7 @@ macro_rules! kelvin {
     };
 }
 
+/// Convenience macro to create a [`Temperature::Fahrenheit`]
 #[macro_export]
 macro_rules! fahrenheit {
     ($f:expr) => {
