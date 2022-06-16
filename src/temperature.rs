@@ -155,4 +155,19 @@ mod tests {
         let abs_zero = 0.0;
         assert_relative_eq!(kelvin_to_fahrenheit(abs_zero), -459.67);
     }
+
+    #[test]
+    fn celsius_macro() {
+        assert_eq!(celsius!(69.0), Temperature::Celsius(69.0));
+    }
+
+    #[test]
+    fn kelvin_macro() {
+        assert_eq!(kelvin!(69.0), Temperature::Kelvin(69.0));
+    }
+
+    #[test]
+    fn fahrenheit_macro() {
+        assert_eq!(fahrenheit!(69.0), Temperature::Fahrenheit(69.0));
+    }
 }
