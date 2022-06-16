@@ -29,7 +29,7 @@ macro_rules! fahrenheit {
 }
 
 impl Temperature {
-    /// Returns `self` with the contained value converted to Celsius
+    /// Returns `self`'s contained value converted to Celsius
     /// as a [`Temperature::Celsius`], returning a copy of `self` if
     /// it was already in Celsius
     pub fn to_celsius(&self) -> Temperature {
@@ -40,7 +40,7 @@ impl Temperature {
         }
     }
 
-    /// Returns `self` with the contained value converted to Kelvin
+    /// Returns `self`'s contained value converted to Kelvin
     /// as a [`Temperature::Kelvin`], returning a copy of `self` if
     /// it was already in Kelvin
     pub fn to_kelvin(&self) -> Temperature {
@@ -51,7 +51,7 @@ impl Temperature {
         }
     }
 
-    /// Returns `self` with the contained value
+    /// Returns `self`'s contained value
     /// converted to Fahrenheit as a [`Temperature::Fahrenheit`],
     /// returning a copy of `self` if it was already in Fahrenheit
     pub fn to_fahrenheit(&self) -> Temperature {
