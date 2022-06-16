@@ -1,3 +1,5 @@
+use core::fmt;
+
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
 pub enum Temperature {
     Celsius(f64),
@@ -36,6 +38,16 @@ impl Temperature {
             Temperature::Fahrenheit(_) => *self,
             Temperature::Celsius(c) => Self::Fahrenheit(celsius_to_fahrenheit(*c)),
             Temperature::Kelvin(k) => Self::Fahrenheit(kelvin_to_fahrenheit(*k)),
+        }
+    }
+}
+
+impl fmt::Display for Temperature {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Temperature::Celsius(c) => write!(f, "{}℃", c),
+            Temperature::Kelvin(k) => write!(f, "{}K", k),
+            Temperature::Fahrenheit(fa) => write!(f, "{}℉", fa),
         }
     }
 }
