@@ -22,6 +22,18 @@ pub fn celsius_to_kelvin(celsius: f64) -> f64 {
     celsius + 273.15
 }
 
+/// Converts a temperature in Fahrenheit to its
+/// equivalent in Kelvin
+pub fn fahrenheit_to_kelvin(fahrenheit: f64) -> f64 {
+    (fahrenheit + 459.67) * 1.8
+}
+
+/// Converts a temperature in Kelvin to its equivalent
+/// in Fahrenheit
+pub fn kelvin_to_fahrenheit(kelvin: f64) -> f64 {
+    (kelvin - 273.15) * 1.8 + 32.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -61,5 +73,17 @@ mod tests {
 
         let room_temp = 21.0;
         assert_relative_eq!(celsius_to_kelvin(room_temp), 294.15);
+    }
+
+    #[test]
+    fn f_to_k() {
+        let abs_zero = -459.67;
+        assert_relative_eq!(fahrenheit_to_kelvin(abs_zero), 0.0);
+    }
+
+    #[test]
+    fn k_to_f() {
+        let abs_zero = 0.0;
+        assert_relative_eq!(kelvin_to_fahrenheit(abs_zero), -459.67);
     }
 }
