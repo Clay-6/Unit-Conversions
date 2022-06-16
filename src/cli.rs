@@ -2,37 +2,37 @@ use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
 pub struct Args {
-    /// The conversion target
+    /// The conversion source
     #[clap(subcommand)]
-    pub target: Target,
+    pub target: Source,
 }
 
 #[derive(Debug, Subcommand)]
-pub enum Target {
-    /// Convert a temperature to Celsius
+pub enum Source {
+    /// Convert a temperature from Celsius
     Celsius {
-        /// Convert from Fahrenheit
+        /// Convert to Fahrenheit
         #[clap(short, long)]
         farenheit: Option<f64>,
-        /// Convert from Kelvin
+        /// Convert to Kelvin
         #[clap(short, long)]
         kelvin: Option<f64>,
     },
-    /// Convert a temperature to Kelvin
+    /// Convert a temperature from Kelvin
     Kelvin {
-        /// Convert from Celsius
+        /// Convert to Celsius
         #[clap(short, long)]
         celsius: Option<f64>,
-        /// Convert from Fahrenheit
+        /// Convert to Fahrenheit
         #[clap(short, long)]
         fahrenheit: Option<f64>,
     },
-    /// Convert a temperature to Fahrenheit
+    /// Convert a temperature from Fahrenheit
     Fahrenheit {
-        /// Convert from Celsius
+        /// Convert to Celsius
         #[clap(short, long)]
         celsius: Option<f64>,
-        /// Convert from Kelvin
+        /// Convert to Kelvin
         #[clap(short, long)]
         kelvin: Option<f64>,
     },
