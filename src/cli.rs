@@ -42,7 +42,7 @@ pub enum Source {
         #[clap(short, long)]
         kelvin: bool,
     },
-    /// Convert from Kilometers
+    /// Convert from Kilometers. Alias is `km`
     #[clap(alias = "km")]
     Kilometers {
         /// The value to convert
