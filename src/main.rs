@@ -2,7 +2,12 @@ mod cli;
 
 use clap::Parser as _;
 use cli::Args;
-use unit_conversions::{celsius, fahrenheit, kelvin, temperature::Temperature};
+use unit_conversions::{
+    celsius,
+    distance::{km_to_miles, miles_to_km},
+    fahrenheit, kelvin,
+    temperature::Temperature,
+};
 
 fn main() {
     let args = Args::parse();
@@ -47,6 +52,16 @@ fn main() {
             }
             if kelvin {
                 println!("{}", temp.to_kelvin())
+            }
+        }
+        cli::Source::Kilometers { value, miles } => {
+            if miles {
+                println!("{}", km_to_miles(value));
+            }
+        }
+        cli::Source::Miles { value, km } => {
+            if km {
+                println!("{}", miles_to_km(value));
             }
         }
     }

@@ -42,4 +42,21 @@ pub enum Source {
         #[clap(short, long)]
         kelvin: bool,
     },
+    /// Convert from Kilometers
+    #[clap(alias = "km")]
+    Kilometers {
+        /// The value to convert
+        value: f64,
+        /// Convert to miles
+        #[clap(short, long)]
+        miles: bool,
+    },
+    /// Convert from Miles
+    Miles {
+        /// The value to convert
+        value: f64,
+        /// Convert to Kilometers
+        #[clap(short, long)]
+        km: bool,
+    },
 }
