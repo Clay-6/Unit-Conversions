@@ -6,45 +6,47 @@ use unit_conversions::{celsius, fahrenheit, kelvin, temperature::Temperature};
 
 fn main() {
     let args = Args::parse();
-
-    match args.target {
+    match args.source {
         cli::Source::Celsius {
-            farenheit: fa,
-            kelvin: kel,
+            value,
+            fahrenheit,
+            kelvin,
         } => {
-            if let Some(k) = kel {
-                let t = celsius!(k);
-                println!("{}", t.to_kelvin())
+            let temp = celsius!(value);
+
+            if fahrenheit {
+                println!("{}", temp.to_fahrenheit());
             }
-            if let Some(f) = fa {
-                let t = celsius!(f);
-                println!("{}", t.to_fahrenheit());
+            if kelvin {
+                println!("{}", temp.to_kelvin());
             }
         }
         cli::Source::Kelvin {
-            celsius: cel,
-            fahrenheit: fa,
+            value,
+            celsius,
+            fahrenheit,
         } => {
-            if let Some(c) = cel {
-                let t = kelvin!(c);
-                println!("{}", t.to_celsius())
+            let temp = kelvin!(value);
+
+            if celsius {
+                println!("{}", temp.to_celsius());
             }
-            if let Some(f) = fa {
-                let t = kelvin!(f);
-                println!("{}", t.to_fahrenheit())
+            if fahrenheit {
+                println!("{}", temp.to_fahrenheit());
             }
         }
         cli::Source::Fahrenheit {
-            celsius: cel,
-            kelvin: kel,
+            value,
+            celsius,
+            kelvin,
         } => {
-            if let Some(c) = cel {
-                let t = fahrenheit!(c);
-                println!("{}", t.to_celsius());
+            let temp = fahrenheit!(value);
+
+            if celsius {
+                println!("{}", temp.to_celsius());
             }
-            if let Some(k) = kel {
-                let t = fahrenheit!(k);
-                println!("{}", t.to_kelvin());
+            if kelvin {
+                println!("{}", temp.to_kelvin())
             }
         }
     }
