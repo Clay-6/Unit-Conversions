@@ -1,6 +1,8 @@
 [package]
 name = "unit-conversions"
+authors = ["Clayman"]
 version = "0.1.0"
+description = "A CLI application to convert between various units"
 edition = "2021"
 
 [[bin]]

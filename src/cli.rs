@@ -1,6 +1,7 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
+#[clap(author, version, about, long_about = None)]
 pub struct Args {
     /// The conversion source
     #[clap(subcommand)]
