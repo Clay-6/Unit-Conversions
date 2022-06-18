@@ -7,30 +7,6 @@ pub enum Temperature {
     Fahrenheit(f64),
 }
 
-/// Convenience macro to create a [`Temperature::Celsius`]
-#[macro_export]
-macro_rules! celsius {
-    ($c:expr) => {
-        Temperature::Celsius($c)
-    };
-}
-
-/// Convenience macro to create a [`Temperature::Kelvin`]
-#[macro_export]
-macro_rules! kelvin {
-    ($k:expr) => {
-        Temperature::Kelvin($k)
-    };
-}
-
-/// Convenience macro to create a [`Temperature::Fahrenheit`]
-#[macro_export]
-macro_rules! fahrenheit {
-    ($f:expr) => {
-        Temperature::Fahrenheit($f)
-    };
-}
-
 impl Temperature {
     /// Returns `self`'s contained value converted to Celsius
     /// as a [`Temperature::Celsius`], returning a copy of `self` if
@@ -64,6 +40,30 @@ impl Temperature {
             Temperature::Kelvin(k) => Self::Fahrenheit(kelvin_to_fahrenheit(*k)),
         }
     }
+}
+
+/// Convenience macro to create a [`Temperature::Celsius`]
+#[macro_export]
+macro_rules! celsius {
+    ($c:expr) => {
+        Temperature::Celsius($c)
+    };
+}
+
+/// Convenience macro to create a [`Temperature::Kelvin`]
+#[macro_export]
+macro_rules! kelvin {
+    ($k:expr) => {
+        Temperature::Kelvin($k)
+    };
+}
+
+/// Convenience macro to create a [`Temperature::Fahrenheit`]
+#[macro_export]
+macro_rules! fahrenheit {
+    ($f:expr) => {
+        Temperature::Fahrenheit($f)
+    };
 }
 
 impl fmt::Display for Temperature {
