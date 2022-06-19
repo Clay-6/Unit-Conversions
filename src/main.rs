@@ -3,9 +3,8 @@ mod cli;
 use clap::Parser as _;
 use cli::Args;
 use unit_conversions::{
-    celsius,
-    distance::{km_to_miles, miles_to_km},
-    fahrenheit, kelvin,
+    celsius, fahrenheit, kelvin,
+    length::{km_to_miles, miles_to_km},
     temperature::Temperature,
 };
 
