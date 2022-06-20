@@ -32,14 +32,14 @@ mod tests {
     use approx::assert_relative_eq;
 
     #[test]
-    fn lbs_to_kg() {
+    fn lb_to_kg() {
         assert_relative_eq!(pounds_to_kg(0.220), 0.0997903214);
         assert_relative_eq!(pounds_to_kg(22.04623), 10.000001715265102);
         assert_relative_eq!(pounds_to_kg(220.4623), 100.00001715265101);
     }
 
     #[test]
-    fn kg_to_lbs() {
+    fn kg_to_lb() {
         assert_relative_eq!(kg_to_pounds(0.1), 0.22046226218487758);
         assert_relative_eq!(kg_to_pounds(10.0), 22.046226218487757);
         assert_relative_eq!(kg_to_pounds(100.0), 220.46226218487757);

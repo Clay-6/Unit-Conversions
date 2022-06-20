@@ -11,6 +11,7 @@ pub struct Args {
 #[derive(Debug, Subcommand)]
 pub enum Source {
     /// Convert a temperature from Celsius
+    #[clap(alias = "c")]
     Celsius {
         /// The value to convert
         value: f64,
@@ -22,6 +23,7 @@ pub enum Source {
         kelvin: bool,
     },
     /// Convert a temperature from Kelvin
+    #[clap(alias = "k")]
     Kelvin {
         /// The value to convert
         value: f64,
@@ -33,6 +35,7 @@ pub enum Source {
         fahrenheit: bool,
     },
     /// Convert a temperature from Fahrenheit
+    #[clap(alias = "f")]
     Fahrenheit {
         /// The value to convert
         value: f64,
@@ -53,6 +56,7 @@ pub enum Source {
         miles: bool,
     },
     /// Convert from Miles
+    #[clap(alias = "mi")]
     Miles {
         /// The value to convert
         value: f64,
@@ -61,6 +65,7 @@ pub enum Source {
         km: bool,
     },
     /// Convert from Grams
+    #[clap(alias = "g")]
     Grams {
         /// The value to convert
         value: f64,
@@ -84,6 +89,7 @@ pub enum Source {
         grams: bool,
     },
     /// Convert from Ounces
+    #[clap(alias = "oz")]
     Ounces {
         /// The value to convert
         value: f64,
@@ -92,6 +98,7 @@ pub enum Source {
         grams: bool,
     },
     /// Convert from Pounds
+    #[clap(alias = "lb")]
     Pounds {
         /// The value to convert
         value: f64,
