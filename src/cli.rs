@@ -60,4 +60,24 @@ pub enum Source {
         #[clap(short, long)]
         km: bool,
     },
+    /// Convert from Kilograms
+    #[clap(alias = "kg")]
+    Kilograms {
+        /// The value to convert
+        value: f64,
+        /// Convert to Pounds
+        #[clap(short, long)]
+        lbs: bool,
+        /// Convert to grams
+        #[clap(short, long)]
+        grams: bool,
+    },
+    /// Convert from Pounds
+    Pounds {
+        /// The value to convert
+        value: f64,
+        /// Convert to Kilograms
+        #[clap(short, long)]
+        kg: bool,
+    },
 }

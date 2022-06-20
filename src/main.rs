@@ -6,6 +6,7 @@ use unit_conversions::{
     celsius, fahrenheit, kelvin,
     length::{km_to_miles, miles_to_km},
     temperature::Temperature,
+    weight::{kg_to_pounds, pounds_to_kg},
 };
 
 const NO_TARGET_ERR: &str = "No conversion target specified";
@@ -84,6 +85,27 @@ fn main() -> Result<(), &'static str> {
 
             if km {
                 println!("{}", miles_to_km(value));
+            }
+        }
+        cli::Source::Kilograms { value, lbs, grams } => {
+            if !(lbs || grams) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if lbs {
+                println!("{}lb", kg_to_pounds(value));
+            }
+            if grams {
+                println!("{}g", value * 1000.0);
+            }
+        }
+        cli::Source::Pounds { value, kg } => {
+            if !kg {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if kg {
+                println!("{}kg", pounds_to_kg(value))
             }
         }
     }
