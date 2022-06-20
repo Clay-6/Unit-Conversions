@@ -4,7 +4,7 @@ use clap::Parser as _;
 use cli::Args;
 use unit_conversions::{
     celsius, fahrenheit, kelvin,
-    length::{km_to_miles, miles_to_km},
+    length::{cm_to_inches, inches_to_cm, km_to_miles, miles_to_km},
     temperature::Temperature,
     weight::{grams_to_ounces, kg_to_pounds, ounces_to_grams, pounds_to_kg},
 };
@@ -131,6 +131,31 @@ fn main() -> Result<(), &'static str> {
 
             if grams {
                 println!("{}g", ounces_to_grams(value));
+            }
+        }
+        cli::Source::Centimeters {
+            value,
+            inches,
+            kilometers,
+        } => {
+            if !(inches || kilometers) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if inches {
+                println!("{}in", cm_to_inches(value));
+            }
+            if kilometers {
+                println!("{}km", value * 100.0 * 1000.0);
+            }
+        }
+        cli::Source::Inches { value, centimeters } => {
+            if !centimeters {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if centimeters {
+                println!("{}cm", inches_to_cm(value));
             }
         }
     }

@@ -46,6 +46,18 @@ pub enum Source {
         #[clap(short, long)]
         kelvin: bool,
     },
+    /// Convert from Centimeters
+    #[clap(alias = "cm")]
+    Centimeters {
+        /// The value to convert
+        value: f64,
+        /// Convert to inches
+        #[clap(short, long)]
+        inches: bool,
+        /// Convert to Kilometers
+        #[clap(short, long)]
+        kilometers: bool,
+    },
     /// Convert from Kilometers. Alias is `km`
     #[clap(alias = "km")]
     Kilometers {
@@ -54,6 +66,14 @@ pub enum Source {
         /// Convert to miles
         #[clap(short, long)]
         miles: bool,
+    },
+    /// Convert from inches
+    #[clap(alias = "in")]
+    Inches {
+        /// The value to convert
+        value: f64,
+        /// Convert to Centimeters
+        centimeters: bool,
     },
     /// Convert from Miles
     #[clap(alias = "mi")]
