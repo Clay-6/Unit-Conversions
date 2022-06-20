@@ -1,11 +1,13 @@
 /// Convert a value in Miles to its
 /// equivalent in Kilometers
+#[inline]
 pub fn miles_to_km(miles: f64) -> f64 {
     miles * 1.609344
 }
 
 /// Convert a value in Kilometers to its
 /// equivalent in Miles
+#[inline]
 pub fn km_to_miles(km: f64) -> f64 {
     km * 0.6213712
 }
