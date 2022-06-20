@@ -6,7 +6,7 @@ use unit_conversions::{
     celsius, fahrenheit, kelvin,
     length::{km_to_miles, miles_to_km},
     temperature::Temperature,
-    weight::{kg_to_pounds, pounds_to_kg},
+    weight::{grams_to_ounces, kg_to_pounds, ounces_to_grams, pounds_to_kg},
 };
 
 const NO_TARGET_ERR: &str = "No conversion target specified";
@@ -106,6 +106,31 @@ fn main() -> Result<(), &'static str> {
 
             if kg {
                 println!("{}kg", pounds_to_kg(value))
+            }
+        }
+        cli::Source::Grams {
+            value,
+            ounces,
+            kilograms,
+        } => {
+            if !(ounces || kilograms) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if ounces {
+                println!("{}oz", grams_to_ounces(value));
+            }
+            if kilograms {
+                println!("{}kg", value / 1000.0);
+            }
+        }
+        cli::Source::Ounces { value, grams } => {
+            if !(grams) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if grams {
+                println!("{}g", ounces_to_grams(value));
             }
         }
     }

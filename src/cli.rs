@@ -60,6 +60,17 @@ pub enum Source {
         #[clap(short, long)]
         km: bool,
     },
+    /// Convert from Grams
+    Grams {
+        /// The value to convert
+        value: f64,
+        /// Convert to ounces
+        #[clap(short, long)]
+        ounces: bool,
+        /// Convert to Kilograms
+        #[clap(short, long)]
+        kilograms: bool,
+    },
     /// Convert from Kilograms
     #[clap(alias = "kg")]
     Kilograms {
@@ -69,6 +80,14 @@ pub enum Source {
         #[clap(short, long)]
         lbs: bool,
         /// Convert to grams
+        #[clap(short, long)]
+        grams: bool,
+    },
+    /// Convert from Ounces
+    Ounces {
+        /// The value to convert
+        value: f64,
+        /// Convert to Grams
         #[clap(short, long)]
         grams: bool,
     },
