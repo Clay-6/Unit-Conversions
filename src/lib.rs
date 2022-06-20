@@ -3,3 +3,4 @@
 
 pub mod length;
 pub mod temperature;
+pub mod weight;
