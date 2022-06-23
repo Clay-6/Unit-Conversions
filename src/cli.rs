@@ -10,7 +10,8 @@ pub struct Args {
 
 #[derive(Debug, Subcommand)]
 pub enum Source {
-    /// Convert a temperature from Celsius
+    /// Convert a temperature from Celsius.
+    /// Alias is `c`
     #[clap(alias = "c")]
     Celsius {
         /// The value to convert
@@ -22,7 +23,8 @@ pub enum Source {
         #[clap(short, long)]
         kelvin: bool,
     },
-    /// Convert a temperature from Kelvin
+    /// Convert a temperature from Kelvin.
+    /// Alias is `k`
     #[clap(alias = "k")]
     Kelvin {
         /// The value to convert
@@ -34,7 +36,8 @@ pub enum Source {
         #[clap(short, long)]
         fahrenheit: bool,
     },
-    /// Convert a temperature from Fahrenheit
+    /// Convert a temperature from Fahrenheit.
+    /// Alias is `f`
     #[clap(alias = "f")]
     Fahrenheit {
         /// The value to convert
@@ -46,7 +49,8 @@ pub enum Source {
         #[clap(short, long)]
         kelvin: bool,
     },
-    /// Convert from Centimeters
+    /// Convert from Centimeters.
+    /// Alias is `cm`
     #[clap(alias = "cm")]
     Centimeters {
         /// The value to convert
@@ -67,7 +71,7 @@ pub enum Source {
         #[clap(short, long)]
         miles: bool,
     },
-    /// Convert from inches
+    /// Convert from inches. Alias is `in`
     #[clap(alias = "in")]
     Inches {
         /// The value to convert
@@ -75,7 +79,7 @@ pub enum Source {
         /// Convert to Centimeters
         centimeters: bool,
     },
-    /// Convert from Miles
+    /// Convert from Miles. Alias is `mi`
     #[clap(alias = "mi")]
     Miles {
         /// The value to convert
@@ -84,7 +88,7 @@ pub enum Source {
         #[clap(short, long)]
         km: bool,
     },
-    /// Convert from Grams
+    /// Convert from Grams. Alias is `g`
     #[clap(alias = "g")]
     Grams {
         /// The value to convert
@@ -96,7 +100,7 @@ pub enum Source {
         #[clap(short, long)]
         kilograms: bool,
     },
-    /// Convert from Kilograms
+    /// Convert from Kilograms. Alias is `kg`
     #[clap(alias = "kg")]
     Kilograms {
         /// The value to convert
@@ -108,7 +112,7 @@ pub enum Source {
         #[clap(short, long)]
         grams: bool,
     },
-    /// Convert from Ounces
+    /// Convert from Ounces. Alias is `oz`
     #[clap(alias = "oz")]
     Ounces {
         /// The value to convert
@@ -117,7 +121,7 @@ pub enum Source {
         #[clap(short, long)]
         grams: bool,
     },
-    /// Convert from Pounds
+    /// Convert from Pounds. Alias is `lb`
     #[clap(alias = "lb")]
     Pounds {
         /// The value to convert
