@@ -69,7 +69,7 @@ fn main() -> Result<(), &'static str> {
                 println!("{}", temp.to_kelvin())
             }
         }
-        cli::Source::Kilometers { value, miles } => {
+        cli::Source::Kilometres { value, miles } => {
             if !miles {
                 return Err(NO_TARGET_ERR);
             }
@@ -133,7 +133,7 @@ fn main() -> Result<(), &'static str> {
                 println!("{}g", ounces_to_grams(value));
             }
         }
-        cli::Source::Centimeters {
+        cli::Source::Centimetres {
             value,
             inches,
             kilometers,
