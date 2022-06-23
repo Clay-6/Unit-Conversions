@@ -2,12 +2,7 @@ mod cli;
 
 use clap::Parser as _;
 use cli::Args;
-use unit_conversions::{
-    celsius, fahrenheit, kelvin,
-    length::{cm_to_inches, inches_to_cm, km_to_miles, miles_to_km},
-    temperature::Temperature,
-    weight::{grams_to_ounces, kg_to_pounds, ounces_to_grams, pounds_to_kg},
-};
+use unit_conversions::{length::*, temperature::*, weight::*, *};
 
 const NO_TARGET_ERR: &str = "No conversion target specified";
 
@@ -69,13 +64,24 @@ fn main() -> Result<(), &'static str> {
                 println!("{}", temp.to_kelvin())
             }
         }
-        cli::Source::Kilometres { value, miles } => {
-            if !miles {
+        cli::Source::Kilometres {
+            value,
+            miles,
+            centimetres,
+            metres,
+        } => {
+            if !(miles || centimetres || metres) {
                 return Err(NO_TARGET_ERR);
             }
 
             if miles {
                 println!("{}", km_to_miles(value));
+            }
+            if centimetres {
+                println!("{}cm", value * 1000.0 * 100.0)
+            }
+            if metres {
+                println!("{}m", value * 1000.0)
             }
         }
         cli::Source::Miles { value, km } => {
@@ -136,17 +142,21 @@ fn main() -> Result<(), &'static str> {
         cli::Source::Centimetres {
             value,
             inches,
+            metres,
             kilometers,
         } => {
-            if !(inches || kilometers) {
+            if !(inches || kilometers || metres) {
                 return Err(NO_TARGET_ERR);
             }
 
             if inches {
                 println!("{}in", cm_to_inches(value));
             }
+            if metres {
+                println!("{}m", value / 100.0);
+            }
             if kilometers {
-                println!("{}km", value * 100.0 * 1000.0);
+                println!("{}km", value / 100.0 / 1000.0);
             }
         }
         cli::Source::Inches { value, centimeters } => {
@@ -156,6 +166,35 @@ fn main() -> Result<(), &'static str> {
 
             if centimeters {
                 println!("{}cm", inches_to_cm(value));
+            }
+        }
+        cli::Source::Metres {
+            value,
+            feet,
+            centimetres,
+            kilometres,
+        } => {
+            if !(feet || centimetres || kilometres) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if feet {
+                println!("{}ft", metres_to_feet(value))
+            }
+            if centimetres {
+                println!("{}cm", value * 100.0);
+            }
+            if kilometres {
+                println!("{}km", value / 1000.0);
+            }
+        }
+        cli::Source::Feet { value, metres } => {
+            if !(metres) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if metres {
+                println!("{}m", feet_to_metres(value))
             }
         }
     }

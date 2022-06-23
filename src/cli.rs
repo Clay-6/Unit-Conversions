@@ -58,9 +58,27 @@ pub enum Source {
         /// Convert to inches
         #[clap(short, long)]
         inches: bool,
-        /// Convert to Kilometers
+        /// Convert to metres
+        #[clap(short, long)]
+        metres: bool,
+        /// Convert to Kilometres
         #[clap(short, long)]
         kilometers: bool,
+    },
+    /// Convert from Metres. Alias is `m`
+    #[clap(alias = "m")]
+    Metres {
+        /// The value to convert
+        value: f64,
+        /// Convert to feet
+        #[clap(short, long)]
+        feet: bool,
+        /// Convert to Centimetres
+        #[clap(short, long)]
+        centimetres: bool,
+        /// Convert to Kilometres
+        #[clap(short, long)]
+        kilometres: bool,
     },
     /// Convert from Kilometres. Alias is `km`
     #[clap(alias = "km")]
@@ -70,6 +88,12 @@ pub enum Source {
         /// Convert to miles
         #[clap(short, long)]
         miles: bool,
+        /// Convert to Centimetres
+        #[clap(short, long)]
+        centimetres: bool,
+        /// Convert to metres
+        #[clap(short, long)]
+        metres: bool,
     },
     /// Convert from inches. Alias is `in`
     #[clap(alias = "in")]
@@ -78,6 +102,15 @@ pub enum Source {
         value: f64,
         /// Convert to Centimeters
         centimeters: bool,
+    },
+    /// Convert from feet. Alias is `ft`
+    #[clap(alias = "ft")]
+    Feet {
+        /// The value to convert
+        value: f64,
+        /// Convert to Metres
+        #[clap(short, long)]
+        metres: bool,
     },
     /// Convert from Miles. Alias is `mi`
     #[clap(alias = "mi")]
