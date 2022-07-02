@@ -172,4 +172,22 @@ pub enum Source {
         #[clap(short, long)]
         kg: bool,
     },
+    /// Convert from Miles per hour.
+    /// Alias is `mph`
+    #[clap(alias = "mph")]
+    MilesPerHour {
+        value: f64,
+        /// Convert to Kilometres per hour
+        #[clap(short, long)]
+        kmh: bool,
+    },
+    /// Convert from Kilometres per hour.
+    /// Alias is 'kmh`
+    #[clap(alias = "kmh")]
+    KilometersPerHour {
+        value: f64,
+        /// Convert to Miles per hour
+        #[clap(short, long)]
+        mph: bool
+    },
 }

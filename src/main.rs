@@ -2,7 +2,13 @@ mod cli;
 
 use clap::Parser as _;
 use cli::Args;
-use unit_conversions::{length::*, temperature::*, weight::*, *};
+use unit_conversions::{
+    length::*,
+    speed::{kmh_to_mph, mph_to_kmh},
+    temperature::*,
+    weight::*,
+    *,
+};
 
 const NO_TARGET_ERR: &str = "No conversion target specified";
 
@@ -15,7 +21,7 @@ fn main() -> Result<(), &'static str> {
             fahrenheit,
             kelvin,
         } => {
-            if !fahrenheit && !kelvin {
+            if !(fahrenheit || kelvin) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -33,7 +39,7 @@ fn main() -> Result<(), &'static str> {
             celsius,
             fahrenheit,
         } => {
-            if !celsius && !fahrenheit {
+            if !(celsius || fahrenheit) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -51,7 +57,7 @@ fn main() -> Result<(), &'static str> {
             celsius,
             kelvin,
         } => {
-            if !celsius && !kelvin {
+            if !(celsius || kelvin) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -85,7 +91,7 @@ fn main() -> Result<(), &'static str> {
             }
         }
         cli::Source::Miles { value, km } => {
-            if !km {
+            if !(km) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -106,7 +112,7 @@ fn main() -> Result<(), &'static str> {
             }
         }
         cli::Source::Pounds { value, kg } => {
-            if !kg {
+            if !(kg) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -160,7 +166,7 @@ fn main() -> Result<(), &'static str> {
             }
         }
         cli::Source::Inches { value, centimeters } => {
-            if !centimeters {
+            if !(centimeters) {
                 return Err(NO_TARGET_ERR);
             }
 
@@ -194,7 +200,25 @@ fn main() -> Result<(), &'static str> {
             }
 
             if metres {
-                println!("{}m", feet_to_metres(value))
+                println!("{}m", feet_to_metres(value));
+            }
+        }
+        cli::Source::MilesPerHour { value, kmh } => {
+            if !(kmh) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if kmh {
+                println!("{}km/h", mph_to_kmh(value));
+            }
+        }
+        cli::Source::KilometersPerHour { value, mph } => {
+            if !(mph) {
+                return Err(NO_TARGET_ERR);
+            }
+
+            if mph {
+                println!("{}mph", kmh_to_mph(value));
             }
         }
     }
